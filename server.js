@@ -22,7 +22,7 @@ const postgres = knex({
     },
     */
    connection:{
-       connectionString : "postgresql-tetrahedral-83688",
+       connectionString : process.env.DATABASE_URL,
        ssl:{
         rejectUnauthorized: false
        }

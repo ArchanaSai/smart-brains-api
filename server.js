@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 3000
 const app = express()
 const postgres = knex({
     client : "pg",
+    
+    /*
     connection:{
         host: "127.0.0.1",
         user: "postgres",
@@ -18,6 +20,13 @@ const postgres = knex({
         password: "12345",
         database: "smartbrainsdb"
     },
+    */
+   connection:{
+       connectionString : "postgresql-tetrahedral-83688",
+       ssl:{
+        rejectUnauthorized: false
+       }
+   }
 })
 app.use(bodyParser.json())
 app.use(cors())

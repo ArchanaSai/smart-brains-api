@@ -46,6 +46,7 @@ const handleRegister = (req,res,postgres,bcrypt) => {
         })
     })
     .catch(error=>{
+        console.log(error)
         res.json("unable to register").status("400");
     })
 }

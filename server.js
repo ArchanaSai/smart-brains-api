@@ -7,10 +7,8 @@ const register = require('./controller/register')
 const signin = require('./controller/signin')
 const profile = require('./controller/profile')
 const image = require('./controller/image')
-
+const PORT = process.env.PORT || 3000
 const app = express()
-const currentDate = new Date()
-const active = 'Y'
 const postgres = knex({
     client : "pg",
     connection:{
@@ -21,7 +19,6 @@ const postgres = knex({
         database: "smartbrainsdb"
     },
 })
-
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -39,6 +36,6 @@ app.post('/invokeClarifai',(req,res)=>{image.invokeClarifai(req,res)})
 
 app.put('/image',(req,res)=>{image.handleImage(req,res,postgres)})
 
-app.listen(3000, ()=>{
-    console.log("listening on port 3000");
+app.listen(PORT, ()=>{
+    console.log(`listening on port ${PORT}`);
 })

@@ -1,4 +1,6 @@
 const handleRegister = (req,res,postgres,bcrypt) => {
+    const currentDate = new Date()
+    const active = 'Y'
     const {email,name,password} = req.body
     if(!email || !password || !name){
         return res.status("400").json("invalid form submission")
